@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MSpectrum Solar Home Plans — Smart Savings & Subscriptions</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Discover your potential energy savings with MSpectrum's Solar Savings and Solar Subscription Plans. Calculate your custom solar generation, Meralco bill reduction, and monthly net savings.">
+</head>
+<body class="body">
+
+  <!-- Header Navigation -->
+  <header class="navbar no-print">
+    <div class="nav-container">
+      <a href="/" class="nav-logo-wrapper" id="main-logo">
+        <div class="logo">
+          <span class="logo-m">M</span><span class="logo-spectrum">SPECTRUM</span>
+          <span class="logo-tag">RECRUIT HOME PLANS</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#calculator-section" class="nav-link-item">Calculators</a></li>
+        <li><a href="#features-section" class="nav-link-item">Plan Details</a></li>
+        <li>
+          <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Color Theme">
+            <div class="toggle-circle"></div>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Scrolling Marquee Text -->
+  <div class="marquee-container no-print">
+    <div class="marquee-track">
+      <span>POWER YOUR VALUE. POWER YOUR HOME. POWER YOUR SAVINGS. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span>POWER YOUR VALUE. POWER YOUR HOME. POWER YOUR SAVINGS. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span>POWER YOUR VALUE. POWER YOUR HOME. POWER YOUR SAVINGS. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+  </div>
+
+  <main class="main-wrapper">
+    <!-- Hero Section -->
+    <section class="section-hero no-print">
+      <div class="container-100">
+        <div class="hero-grid">
+          <div class="hero-text-block">
+            <div class="corporate-tag">SUTAINABLE LIVING & SDGs</div>
+            <h1 class="hero-title">POWER YOUR<br><span class="highlight-text">VALUE.</span></h1>
+            <p class="hero-desc">Choose the program that fits your household's energy usage. Use our detailed calculator below to see how much you can save instantly.</p>
+          </div>
+          <div class="hero-stats-block">
+            <div class="stats-mini-grid">
+              <div class="stat-mini-card">
+                <span class="mini-card-num">2026</span>
+                <span class="mini-card-lbl">Rates Schedule</span>
+              </div>
+              <div class="stat-mini-card">
+                <span class="mini-card-num">0%</span>
+                <span class="mini-card-lbl">Upfront Cost</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Plan Tabs -->
+    <section class="plan-tabs-section no-print">
+      <div class="container-100 flex-center">
+        <div class="plan-tabs" role="tablist">
+          <button class="tab-btn savings active" id="tab-savings" role="tab" aria-selected="true" aria-controls="panel-savings">
+            <span class="dot"></span> Solar Savings Plan
+          </button>
+          <button class="tab-btn subscription" id="tab-subscription" role="tab" aria-selected="false" aria-controls="panel-subscription">
+            <span class="dot"></span> Solar Subscription Plan
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calculator Grid Section -->
+    <section class="calculator-grid-section" id="calculator-section">
+      <div class="grid-container">
+        
+        <!-- Left Column: Inputs -->
+        <div class="grid-col col-inputs no-print">
+          <div class="col-header">
+            <h3 class="col-title" id="inputs-title">Configure Savings</h3>
+            
+            <div class="season-simulator">
+              <button class="season-btn active" id="season-dry">Dry Season</button>
+              <button class="season-btn" id="season-wet">Wet Season</button>
+            </div>
+          </div>
+
+          <div class="form-wrapper">
+            <!-- Customer Class Selector -->
+            <div class="form-row border-bottom">
+              <div class="form-label-wrapper">
+                <label for="select-class" class="form-label">
+                  Meralco Customer Class
+                  <span class="tooltip-trigger" data-tooltip="Residential is for homes, GS-A is for small business connections.">?</span>
+                </label>
+              </div>
+              <select id="select-class" class="input-select">
+                <option value="residential">Residential (Homeowners)</option>
+                <option value="gs-a">General Service A (Small Commercial)</option>
+              </select>
+            </div>
+
+            <!-- Current Bill Slider -->
+            <div class="form-row border-bottom slider-row">
+              <div class="form-label-wrapper">
+                <label for="input-bill" class="form-label">Current Monthly Meralco Bill</label>
+                <span class="input-val-badge" id="bill-val">₱8,993</span>
+              </div>
+              <input type="range" id="input-bill" min="2000" max="30000" step="500" value="8993" class="input-slider">
+            </div>
+
+            <!-- Daytime Consumption Slider -->
+            <div class="form-row border-bottom slider-row">
+              <div class="form-label-wrapper">
+                <label for="input-daytime" class="form-label">
+                  Daytime Electricity Share
+                  <span class="tooltip-trigger" data-tooltip="Percentage of energy consumed during peak solar production hours (8 AM - 4 PM).">?</span>
+                </label>
+                <span class="input-val-badge" id="daytime-val">60%</span>
+              </div>
+              <input type="range" id="input-daytime" min="10" max="90" step="5" value="60" class="input-slider">
+              <p class="row-hint">Percent of total electricity consumed during solar production hours.</p>
+            </div>
+
+            <!-- System Size Slider -->
+            <div class="form-row border-bottom slider-row">
+              <div class="form-label-wrapper">
+                <label for="input-system-size" class="form-label">
+                  System Size (kWp)
+                  <span class="tooltip-trigger" data-tooltip="Maximum solar system power output. Larger systems generate more electricity.">?</span>
+                </label>
+                <span class="input-val-badge accent-blue" id="system-size-val">5 kWp</span>
+              </div>
+              <input type="range" id="input-system-size" min="3" max="15" step="1" value="5" class="input-slider">
+            </div>
+
+            <!-- Toggle: Peak Off-Peak -->
+            <div class="toggle-row border-bottom">
+              <div class="toggle-text">
+                <h4 class="toggle-title">
+                  Peak Off-Peak (POP)
+                  <span class="tooltip-trigger" data-tooltip="Peak (daytime weekdays) and Off-Peak (nights/weekends) generation hours.">?</span>
+                </h4>
+                <p class="toggle-subtitle">Opt-in for Meralco's Peak Off-Peak rate</p>
+              </div>
+              <label class="switch-container">
+                <input type="checkbox" id="toggle-pop" checked>
+                <span class="switch-slider"></span>
+              </label>
+            </div>
+
+            <!-- Toggle: Net-Metering -->
+            <div class="toggle-row border-bottom">
+              <div class="toggle-text">
+                <h4 class="toggle-title">
+                  Net-Metering Enrollment
+                  <span class="tooltip-trigger" data-tooltip="Allows exporting excess solar energy back to the Meralco grid for credits.">?</span>
+                </h4>
+                <p class="toggle-subtitle">Export excess energy back to the grid</p>
+              </div>
+              <label class="switch-container">
+                <input type="checkbox" id="toggle-netmetering" checked>
+                <span class="switch-slider"></span>
+              </label>
+            </div>
+
+            <!-- Battery Storage Add-on -->
+            <div class="toggle-row">
+              <div class="toggle-text">
+                <h4 class="toggle-title">
+                  Battery Storage Add-on (5 kWh)
+                  <span class="tooltip-trigger" data-tooltip="Stores solar energy for night use (+30% self-consumption).">?</span>
+                </h4>
+                <p class="toggle-subtitle">Store excess solar power for night use</p>
+              </div>
+              <label class="switch-container">
+                <input type="checkbox" id="toggle-battery">
+                <span class="switch-slider"></span>
+              </label>
+            </div>
+
+            <div class="mechanics-btn-row">
+              <button class="text-btn" id="view-mechanics-btn">View Detailed Promo Mechanics & Rules →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Visual Outputs -->
+        <div class="grid-col col-results">
+          <button class="no-print print-btn" id="btn-print-report">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            Print Proposal
+          </button>
+
+          <div class="results-summary-header">
+            <span class="summary-label">Estimated Net Monthly Savings</span>
+            <div class="savings-value display-val" id="savings-value">₱1,665</div>
+            <p class="summary-subtitle" id="savings-subtitle">Under the Solar Savings Plan program</p>
+          </div>
+
+          <!-- Bold Company Statistics Grid style -->
+          <div class="corporate-stats-grid">
+            <div class="corp-stat-card border-bottom border-right">
+              <span class="corp-stat-num" id="val-solar-gen">600 kWh</span>
+              <span class="corp-stat-lbl">Monthly Solar Gen.</span>
+            </div>
+            <div class="corp-stat-card border-bottom">
+              <span class="corp-stat-num text-accent-green" id="val-annual-savings">₱19,980</span>
+              <span class="corp-stat-lbl">Annual Net Savings</span>
+            </div>
+            <div class="corp-stat-card border-right">
+              <span class="corp-stat-num" id="val-pre-rate">₱14.99 / kWh</span>
+              <span class="corp-stat-lbl">Pre-Solar Rate</span>
+            </div>
+            <div class="corp-stat-card">
+              <span class="corp-stat-num" id="val-spectrum-rate">₱11.99 / kWh</span>
+              <span class="corp-stat-lbl">MSpectrum Plan Rate</span>
+            </div>
+          </div>
+
+          <!-- Eco and ROI stats blocks -->
+          <div class="eco-roi-section border-top">
+            <div class="grid-card eco-card border-right">
+              <span class="card-emoji">🌳</span>
+              <div class="card-copy">
+                <span class="card-label">Environmental Contribution</span>
+                <span class="card-val"><span id="val-co2">4.2 MT</span> CO₂ saved / <span id="val-trees">69 trees</span> / yr</span>
+              </div>
+            </div>
+            <div class="grid-card roi-card">
+              <span class="card-label">ROI Payback</span>
+              <span class="card-val text-large" id="val-payback">5.8 Years</span>
+            </div>
+          </div>
+
+          <!-- Interactive Bill Comparison -->
+          <div class="comparison-block border-top">
+            <div class="comparison-title-row">
+              <h3 class="comparison-title">Interactive Bill Comparison</h3>
+            </div>
+            
+            <div class="bill-bars-container">
+              <!-- Column 1: Pre-solar -->
+              <div class="bill-bar-col">
+                <div class="bar-value-label" id="lbl-pre-solar">₱8,993</div>
+                <div class="bill-bar-track">
+                  <div class="bill-bar pre-solar" id="bar-pre-solar"></div>
+                </div>
+                <div class="col-lbl">Pre-Solar</div>
+                <div class="col-sublbl" id="sub-pre-solar">Grid Only</div>
+              </div>
+              
+              <!-- Column 2: Post-solar (Stacked) -->
+              <div class="bill-bar-col">
+                <div class="bar-value-label" id="lbl-post-solar">₱7,314</div>
+                <div class="bill-bar-track">
+                  <div class="bill-bar-stack">
+                    <div class="bar-segment meralco-part" id="segment-meralco"></div>
+                    <div class="bar-segment mspectrum-part" id="segment-mspectrum"></div>
+                  </div>
+                </div>
+                <div class="col-lbl">Post-Solar</div>
+                <div class="col-sublbl" id="sub-post-solar">Combined Bill</div>
+              </div>
+            </div>
+
+            <!-- Legend items -->
+            <div class="legend-row">
+              <div class="legend-itm">
+                <span class="legend-dot pre"></span>
+                <span>Pre-Solar Bill</span>
+              </div>
+              <div class="legend-itm">
+                <span class="legend-dot meralco"></span>
+                <span>New Meralco Bill</span>
+              </div>
+              <div class="legend-itm" id="legend-spectrum-item">
+                <span class="legend-dot spectrum-green" id="legend-spectrum-color"></span>
+                <span id="legend-spectrum-text">MSpectrum Bill</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col-Span 2: Detailed Bill Accordion -->
+        <div class="grid-col col-full col-accordion">
+          <button id="accordion-toggle-btn" class="accordion-trigger">
+            <h3 class="accordion-title">
+              Meralco Statement Details (May 2026 Rates)
+            </h3>
+            <div class="accordion-meta">
+              <div class="meta-badge no-print">
+                Estimated Grid: <span id="bill-kwh-val">600 kWh</span>
+              </div>
+              <span id="accordion-arrow" class="arrow">▾</span>
+            </div>
+          </button>
+
+          <div id="accordion-content" class="accordion-content-panel">
+            <div class="table-scroll-wrapper">
+              <table class="statement-table">
+                <thead>
+                  <tr>
+                    <th>Rate Component</th>
+                    <th>May 2026 Price</th>
+                    <th>Pre-Solar Amount</th>
+                    <th>Post-Solar Amount</th>
+                  </tr>
+                </thead>
+                <tbody id="statement-tbody">
+                  <!-- JS generated rows -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Program Details Section -->
+    <section class="section-features no-print" id="features-section">
+      <div class="container-100">
+        <div class="features-header border-bottom">
+          <div class="corporate-tag">BUSINESS PROGRAMS</div>
+          <h2 class="section-heading">Plan Inclusions & Details</h2>
+          <p class="features-intro">Explore the rules, inclusions, and benefits of both solar programs.</p>
+        </div>
+
+        <div class="features-flex-grid">
+          <!-- Card: Savings Plan -->
+          <div class="feature-col border-right">
+            <div class="feature-cell-header">
+              <span class="plan-indicator savings-theme"></span>
+              <h3 class="feature-col-title">Solar Savings Plan</h3>
+            </div>
+            <ul class="feature-bullets">
+              <li><strong>Zero Upfront Cost:</strong> Fully funded and built by MSpectrum.</li>
+              <li><strong>Promo Discount:</strong> Blended rate less ₱3.00/kWh (Y1-3) <span class="promo-tag">PROMO</span></li>
+              <li><strong>Succeeding Years (Y4+):</strong> Blended rate less ₱2.00/kWh.</li>
+              <li><strong>Price Floor:</strong> Rate is capped at a minimum of ₱11.50/kWh.</li>
+              <li><strong>Full Net-Metering Integration:</strong> Export surplus energy back for grid credits.</li>
+              <li><strong>FREE Peak Off-Peak registration:</strong> Lower your regular grid bill further.</li>
+              <li><strong>FREE Operations & Maintenance:</strong> Unlimited system maintenance included.</li>
+            </ul>
+          </div>
+
+          <!-- Card: Subscription Plan -->
+          <div class="feature-col">
+            <div class="feature-cell-header">
+              <span class="plan-indicator subscription-theme"></span>
+              <h3 class="feature-col-title">Solar Subscription Plan</h3>
+            </div>
+            <ul class="feature-bullets">
+              <li><strong>Zero Upfront Cost:</strong> Built and fully operated by MSpectrum.</li>
+              <li><strong>Fixed Subscription Fee:</strong> ₱5,999/month fixed fee for standard 5 kW system.</li>
+              <li><strong>Fully Protected:</strong> Solar panel insurance is fully included in the fee.</li>
+              <li><strong>Free Unlimited Operations & Maintenance:</strong> Never worry about repair costs.</li>
+              <li><strong>Custom Add-ons Available:</strong> Integration for home batteries (integration labor free, battery hardware extra).</li>
+              <li><strong>Grid Service Upgrade:</strong> Support for Meralco service entrance upgrades if needed.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Interactive Modal for Promo Mechanics -->
+  <div class="modal-overlay no-print" id="mechanics-modal">
+    <div class="modal-content">
+      <button class="modal-close" id="close-modal" aria-label="Close Modal">&times;</button>
+      <div class="modal-body">
+        <h3 class="modal-heading">MSpectrum Solar Home Plan Promo Mechanics</h3>
+        <p class="modal-subheading"><strong>Promo Period:</strong> May 14, 2026 – June 30, 2026. Customers must sign contract on or before June 30, 2026.</p>
+        
+        <div class="modal-section">
+          <h4>Eligibility Requirements</h4>
+          <ul>
+            <li>Active Meralco account in good credit standing (paid at least 7 bills last year before actual disconnection).</li>
+            <li>Complete documentary requirements submitted.</li>
+            <li>Passed MSpectrum's technical and site feasibility assessment.</li>
+          </ul>
+        </div>
+
+        <div class="modal-section">
+          <h4>Savings Plan Offer Details</h4>
+          <ul>
+            <li><strong>Discount Structure:</strong> Meralco blended rate less ₱3.00/kWh for first 36 months; blended rate less ₱2.00/kWh for succeeding years.</li>
+            <li><strong>Price Floor:</strong> A minimum rate of ₱11.50/kWh applies at all times.</li>
+            <li><strong>System Size:</strong> Minimum system size of 5 kW, subject to engineering right-sizing.</li>
+            <li><strong>Ownership:</strong> MSpectrum retains system ownership, operations, and maintenance.</li>
+            <li><strong>Contract Term:</strong> Perpetual contract; early termination fees apply before Year 10.</li>
+          </ul>
+        </div>
+
+        <div class="modal-section border-none">
+          <h4>Subscription Plan Offer Details</h4>
+          <ul>
+            <li><strong>Fixed Billing:</strong> Pay a fixed fee (e.g., ₱5,999/month for 5 kWp) which is offset by your Meralco billing reduction.</li>
+            <li><strong>Inclusions:</strong> Insurance cover, full preventive and corrective maintenance.</li>
+            <li><strong>System size:</strong> Designed for systems starting around 5 kW, ideal for consumers with ~600 kWh monthly usage.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer class="footer no-print">
+    <div class="container-100 footer-grid">
+      <div class="footer-copy">
+        <p>&copy; 2026 MSpectrum Inc. All rights reserved. Exclusive to Meralco residential and general service customers.</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.instagram.com/" target="_blank" class="footer-link">Instagram</a>
+        <a href="https://www.linkedin.com/" target="_blank" class="footer-link">LinkedIn</a>
+        <a href="https://www.meralco.com.ph" target="_blank" class="footer-link">Meralco</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
